@@ -4,8 +4,8 @@
 
 ## 3D 개발 환경 구현
 
-- [ ] 프로젝트 설명 (r3f, cannon)
-- [ ] use-cannon 라이브러리 소개
+- [x] 프로젝트 설명 (r3f, cannon)
+- [x] use-cannon 라이브러리 소개
 ```
 cannon-es는 가벼우면서 웹에서 사용하기 쉬운 3D 물리엔진.
 three.js의 간단한 api에서 영감을 받아 개발되었음.
@@ -14,7 +14,7 @@ use-cannon은 R3F와 cannon-es를 연결하여 웹 애플리케이션에서
 ```
 코드로 구현하는 방법은 **Physics 컴포넌트**를 사용한다.
 
-- [ ] leva 라이브러리 소개
+- [x] leva 라이브러리 소개
 ```
 Leva는 사용자에게 GUI를 제공하여 React Three Fiber 기반의
 3D 애플리케이션에서 간단하게 씬의 속성을 조작하고 모니터링할 수 있는 도구.
@@ -26,7 +26,7 @@ Leva 라이브러리를 사용하는 이유?
 실시간 상호작용 및 조절이다.
 ```
 
-- [ ] 물리 엔진 기본 1편 (useBox, useShpere, useCylinder, usePlane )
+- [x] 물리 엔진 기본 1편 (useBox, useShpere, useCylinder, usePlane )
 ```
 충돌체란?
 게임 및 시뮬레이션에서 현실적이고 다양한 상호작용을 제공하는 중요한 개념.
@@ -35,7 +35,7 @@ Leva 라이브러리를 사용하는 이유?
 충돌체의 크기는 메쉬의 크기보다 더 크게 설정할 수 있음.
 ```
 
-- [ ] 물리 엔진 기본 2편 (useTrimesh, useConvexPolyhedron )
+- [x] 물리 엔진 기본 2편 (useTrimesh, useConvexPolyhedron )
 ```
 복잡한 매쉬에 물리엔진을 설정해야할 때 사용.
 
