@@ -12,10 +12,10 @@ export function Cylinder(props) {
   return (
     <mesh
       {...props}
-      ref={meshRef}
-      onPointerOver={() => setHover(true)}
-      onPointerOut={() => setHover(false)}
-      onPointerDown={() => api.velocity.set(0, 5, 0)} // velocity : 위치 조정가능
+        ref={meshRef}
+        onPointerOver={() => setHover(true)}
+        onPointerOut={() => setHover(false)}
+        onPointerDown={() => api.velocity.set(0, 5, 0)} // velocity : 위치 조정가능
       >
       <cylinderGeometry args={[0.5, 0.5, 1, 8]} />
       <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
