@@ -24,19 +24,23 @@ const useWheels = (width, height, front, radius) => {
     const wheelInfos = [
         {
             ...wheelInfo,
-            chassisConnectionPointLocal: [-width * 0.65, height * 0.3, front] // 앞바퀴
+            chassisConnectionPointLocal: [-width * 0.65, height * 0.3, front], // 앞바퀴
+            isFrontWheel: true
         },
         {
             ...wheelInfo,
-            chassisConnectionPointLocal: [width * 0.65, height * 0.3, front]
+            chassisConnectionPointLocal: [width * 0.65, height * 0.3, front],
+            isFrontWheel: true
         },
         {
             ...wheelInfo,
-            chassisConnectionPointLocal: [-width * 0.65, height * 0.3, -front]
+            chassisConnectionPointLocal: [-width * 0.65, height * 0.3, -front],
+            isFrontWheel: false
         },
         {
             ...wheelInfo,
-            chassisConnectionPointLocal: [width * 0.65, height * 0.3, -front]
+            chassisConnectionPointLocal: [width * 0.65, height * 0.3, -front],
+            isFrontWheel: false
         }
     ]
 

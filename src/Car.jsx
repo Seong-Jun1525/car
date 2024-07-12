@@ -8,6 +8,8 @@ import useVehicleControls from './utils/useVehicleControls'
 import { Vector3 } from 'three'
 import { useFrame } from '@react-three/fiber'
 import useFollowCam from './utils/useFollowCam'
+import { CarBody } from './components/CarBody'
+import Wheel from './components/Wheel'
 
 const Car = () => {
 
@@ -16,10 +18,11 @@ const Car = () => {
     // Car의 현재 위치
     const worldPosition = useMemo(() => new Vector3(), []) // Vector3 : x, y, z
 
+    // leva 라이브러리 사용
     const chassisBodyValue = useControls('chassisBody', {
-        width: {value : 0.16, min : 0, max : 1}, // 차체의 너비
-        height: {value : 0.12, min : 0, max : 1}, // 차체의 높이
-        front: {value : 0.17 * 2, min : 0, max : 1} // 차체의 길이
+        width: {value : 0.33, min : 0, max : 1}, // 차체의 너비
+        height: {value : 0.28, min : 0, max : 1}, // 차체의 높이
+        front: {value : 0.24 * 2, min : 0, max : 1} // 차체의 길이
     })
 
     const position = [0, 0.5, 0]
@@ -83,14 +86,37 @@ const Car = () => {
             {/* 차체 */}
             <group ref={chassisBody}>
                 {/* 차체바디 */}
-                <DummyCarBody
+                <CarBody
                     width={chassisBodyValue.width}
                     height={chassisBodyValue.height}
                     front={chassisBodyValue.front}
                 />
+                {/* <DummyCarBody
+                    width={chassisBodyValue.width}
+                    height={chassisBodyValue.height}
+                    front={chassisBodyValue.front * 2}
+                /> */}
             </group>
             {/* 바퀴 */}
-            <DummyWheel
+            <Wheel
+                wheelRef={wheels[0]}
+                radius={wheelRadius}
+                leftSide={true}
+            />
+            <Wheel
+                wheelRef={wheels[1]}
+                radius={wheelRadius}
+            />
+            <Wheel
+                wheelRef={wheels[2]}
+                radius={wheelRadius}
+                leftSide={true}
+            />
+            <Wheel
+                wheelRef={wheels[3]}
+                radius={wheelRadius}
+            />
+            {/* <DummyWheel
                 wheelRef={wheels[0]}
                 radius={wheelRadius}
             />
@@ -105,7 +131,7 @@ const Car = () => {
             <DummyWheel
                 wheelRef={wheels[3]}
                 radius={wheelRadius}
-            />
+            /> */}
         </group>
     )
 }

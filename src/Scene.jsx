@@ -8,10 +8,10 @@ import { Debug, Physics } from "@react-three/cannon";
 // import Torus from "./Torus";
 // import Icosahedron from "./Icosahedron";
 import Car from "./Car";
-import DummyMotionArea from "./dummy/DummyMotionArea";
-import DummyBox from "./dummy/DummyBox";
-import DummyBall from "./dummy/DummyBall";
-import DummyWall from "./dummy/DummyWall";
+// import DummyMotionArea from "./dummy/DummyMotionArea";
+// import DummyBox from "./dummy/DummyBox";
+// import DummyBall from "./dummy/DummyBall";
+// import DummyWall from "./dummy/DummyWall";
 
 function Scene() {
 
@@ -48,13 +48,13 @@ function Scene() {
             <Cylinder position={[-2, 1, 0]} /> */}
             <Car />
             {/* <DummyMotionArea position={[0, -0.2, 0]} /> */}
-            <DummyBall position={[0, 0.2, -2]} args={[0.15]} />
+            {/* <DummyBall position={[0, 0.2, -2]} args={[0.15]} />
             <DummyBox position={[1, 0.2, -2]} args={[0.2, 0.2, 0.2]} />
             <DummyBox position={[1, 0.2, 1]} args={[0.2, 0.5, 0.2]} type={"Static"} />
             <DummyWall position={[5, 0.5, 0]} args={[1, 1, 10]} />
             <DummyWall position={[0, 0.5, 5]} args={[10, 1, 1]} />
             <DummyWall position={[0, 0.5, -5]} args={[10, 1, 1]} />
-            <DummyWall position={[-5, 0.5, 0]} args={[1, 1, 10]} />
+            <DummyWall position={[-5, 0.5, 0]} args={[1, 1, 10]} /> */}
             <Ground rotation={[-Math.PI/2,0,0]}/>
           </Debug>
         </Physics>

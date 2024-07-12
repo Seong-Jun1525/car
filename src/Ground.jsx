@@ -1,5 +1,11 @@
 import React from 'react'
 import { usePlane } from "@react-three/cannon";
+import { Tree } from './components/Tree';
+import DummyBox from "./dummy/DummyBox";
+import DummyBall from "./dummy/DummyBall";
+import DummyWall from "./dummy/DummyWall";
+import { Ball } from './components/Ball';
+import HowToPlay from './components/HowToPlay';
 
 export function Ground(props) {
 
@@ -8,16 +14,43 @@ export function Ground(props) {
   )
 
   return (
-    <mesh
-    {...props}
-    ref={meshRef} 
-    receiveShadow
-    >
-    <planeGeometry args={[15, 15]} />
-    <meshStandardMaterial color="black" wireframe/>
-    {/* 
-      wireframe을 줘서 눈으로 확인하기 편함
-    */}
-  </mesh>
+    <group>
+      <mesh
+        {...props}
+        ref={meshRef} 
+        receiveShadow
+      >
+        <planeGeometry args={[15, 15]} />
+        <meshStandardMaterial color="black" wireframe/>
+        {/* 
+          wireframe을 줘서 눈으로 확인하기 편함
+        */}
+      </mesh>
+
+      {/* 나무 */}
+      <Tree
+        position={[1, 0.5, -1]}
+      />
+      <Tree
+        position={[-1, 0.5, -1]}
+      />
+      <Tree
+        position={[3, 0.5, -1]}
+      />
+      <Tree
+        position={[-3, 0.5, -1]}
+      />
+
+      <Ball position={[0, 0.2, -2]} />
+      {/* <DummyBall  position={[0, 0.2, -2]} args={[0.15]} /> */}
+      {/* <DummyBox position={[1, 0.2, -2]} args={[0.2, 0.2, 0.2]} />
+      <DummyBox position={[1, 0.2, 1]} args={[0.2, 0.5, 0.2]} type={"Static"} /> */}
+      <DummyWall position={[5, 0.5, 0]} args={[1, 1, 10]} />
+      <DummyWall position={[0, 0.5, 5]} args={[10, 1, 1]} />
+      <DummyWall position={[0, 0.5, -5]} args={[10, 1, 1]} />
+      <DummyWall position={[-5, 0.5, 0]} args={[1, 1, 10]} />
+
+      <HowToPlay />
+    </group>
   )
 }

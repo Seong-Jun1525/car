@@ -108,11 +108,33 @@ pivot 포인트와 worldPosition의 중간값을 찾을 때 사용되는 함수
 
 ## 3D 오브젝트 실제 모델 적용하기
 
-- [ ] gltfjsx로 소개 및 glb 파일을 jsx로 변환하기
-- [ ] 자동차 바디 glb 모델로 적용하기
-- [ ] 자동차 바퀴 glb 모델로 적용하기
-- [ ] 충돌 모델 glb 모델로 적용하기
-- [ ] Text 3D 모델 넣기
+- [x] gltfjsx로 소개 및 glb 파일을 jsx로 변환하기
+```
+GLTF를 선언적이고 재사용 가능한 react-three-fiber JSX 컴포넌트로
+변환시켜주는 유틸리티(도구)임.
+```
+
+**gltfjsx 장점**
+```
+- 쉬운 콘텐츠 수정 및 재사용
+- 효율적인 그래프 최적화
+- 압축 옵션 제공
+```
+**gltfjsx 사용법**
+```
+npx gltfjsx [Model.glb] [options]
+
+Options
+--output, -o        Output file name/path
+--types, -t         Add Typescript definitions
+--keepnames, -k     Keep original names
+--keepgroups, -K    Keep (empty) groups, disable pruning
+--meta, -m          Include metadata (as userData)
+```
+- [x] 자동차 바디 glb 모델로 적용하기
+- [x] 자동차 바퀴 glb 모델로 적용하기
+- [x] 충돌 모델 glb 모델로 적용하기
+- [x] Text 3D 모델 넣기
 
 ## 이벤트 및 모션 만들기
 
