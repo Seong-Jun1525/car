@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useRecoilValue } from 'recoil'
+import { stageOne } from './atom'
 
 const useVehicleControls = (vehicleApi, chassisApi) => {
+    const motionStage = useRecoilValue(stageOne)
     const [controls, setControls] = useState({})
 
     useEffect(() => {
@@ -53,6 +56,21 @@ const useVehicleControls = (vehicleApi, chassisApi) => {
             }
         }
     }, [controls, vehicleApi, chassisApi])
+    
+    const onHandleHistory = () => {
+        const url = 'https://github.com/Seong-Jun1525'
+        window.open(url, '_blank')
+    }
+
+    useEffect(() => {
+        if(controls.Enter && motionStage) {
+            onHandleHistory()
+            setControls((controls) => ({
+                ...controls,
+                Enter: false
+            }))
+        }
+    }, [controls, motionStage])
 
     return controls
 }

@@ -8,12 +8,21 @@ import { Debug, Physics } from "@react-three/cannon";
 // import Torus from "./Torus";
 // import Icosahedron from "./Icosahedron";
 import Car from "./Car";
+import { useRecoilValue } from "recoil";
+import { checkAtom, isStartScene } from "./utils/atom";
+import { useEffect } from "react";
 // import DummyMotionArea from "./dummy/DummyMotionArea";
 // import DummyBox from "./dummy/DummyBox";
 // import DummyBall from "./dummy/DummyBall";
 // import DummyWall from "./dummy/DummyWall";
 
 function Scene() {
+  // 전역상태관리 값 사용
+  // const atom = useRecoilValue(checkAtom)
+
+  // useEffect(() => {
+  //   console.log('Scene : ', atom)
+  // }, [])
 
   // const bgValue = useControls({ bgColor: '#fff' })
   // const gravity = useControls('Gravity', {
@@ -21,6 +30,12 @@ function Scene() {
   //   y: {value: -9.81, min: -10, max: 10, step: 0.1},
   //   z: {value: 0, min: -10, max: 10, step: 0.1}
   // })
+
+  const isStart = useRecoilValue(isStartScene)
+
+  useEffect(() => {
+    console.log(isStart)
+  }, [])
 
   return (
     <>
@@ -46,7 +61,6 @@ function Scene() {
             <Torus position={[-1, 1, 2]} />
             <Icosahedron position={[1, 1, 2]} />
             <Cylinder position={[-2, 1, 0]} /> */}
-            <Car />
             {/* <DummyMotionArea position={[0, -0.2, 0]} /> */}
             {/* <DummyBall position={[0, 0.2, -2]} args={[0.15]} />
             <DummyBox position={[1, 0.2, -2]} args={[0.2, 0.2, 0.2]} />
@@ -55,6 +69,9 @@ function Scene() {
             <DummyWall position={[0, 0.5, 5]} args={[10, 1, 1]} />
             <DummyWall position={[0, 0.5, -5]} args={[10, 1, 1]} />
             <DummyWall position={[-5, 0.5, 0]} args={[1, 1, 10]} /> */}
+
+            {/* isStart가 true일 때 Car 컴포넌트 보이게 하기 */}
+            {isStart && <Car />}
             <Ground rotation={[-Math.PI/2,0,0]}/>
           </Debug>
         </Physics>

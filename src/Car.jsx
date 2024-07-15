@@ -10,8 +10,13 @@ import { useFrame } from '@react-three/fiber'
 import useFollowCam from './utils/useFollowCam'
 import { CarBody } from './components/CarBody'
 import Wheel from './components/Wheel'
+import { useRecoilState, useSetRecoilState } from 'recoil'
+import { stageOne, stageTwo } from './utils/atom'
 
 const Car = () => {
+    const setStageOne = useSetRecoilState(stageOne)
+    const setStageTwo = useSetRecoilState(stageTwo)
+    const [value] = useRecoilState(stageTwo)
 
     const { pivot } = useFollowCam()
 
@@ -43,6 +48,7 @@ const Car = () => {
     const [chassisBody, chassisApi] = useCompoundBody(() => ({
         // args: [chassisBodyValue.width, chassisBodyValue.height, chassisBodyValue.front],
         // args: chassisBodyArgs,
+        collisionFilterGroup: 5,
         position,
         mass,
         shapes: [
@@ -77,14 +83,42 @@ const Car = () => {
         // 0.9정도가 적당하다
     }
 
+    const makeStageOne = () => {
+        const chassisPosition = new Vector3().setFromMatrixPosition(chassisBody.current.matrixWorld)
+        // console.log('x', chassisPosition.x)
+        // console.log('z', chassisPosition.z)
+
+        if(Math.abs(3 - chassisPosition.x) < 0.7 && Math.abs(4.9 - chassisPosition.z) < 0.7) {
+            setStageOne(true)
+        } else {
+            setStageOne(false)
+        }
+    }
+    
+    const makeStageTwo = () => {
+        const chassisPosition = new Vector3().setFromMatrixPosition(chassisBody.current.matrixWorld)
+        // console.log('x', chassisPosition.x)
+        // console.log('z', chassisPosition.z)
+        // x -3     0.8
+        // z 5.4    0.8
+        if(Math.abs(-3 - chassisPosition.x) < 0.8 && Math.abs(5.4 - chassisPosition.z) < 0.8) {
+            setStageTwo(true)
+        } else {
+            setStageTwo(false)
+        }
+        // console.log(value)
+    }
+
     useFrame(() => {
         makeFollowCam()
+        makeStageOne()
+        makeStageTwo()
     })
 
     return (
         <group ref={vehicle}>
             {/* 차체 */}
-            <group ref={chassisBody}>
+            <group ref={chassisBody} name='chassisBody'>
                 {/* 차체바디 */}
                 <CarBody
                     width={chassisBodyValue.width}

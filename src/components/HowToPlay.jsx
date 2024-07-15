@@ -1,8 +1,11 @@
 import { Text, Text3D } from '@react-three/drei'
 import React from 'react'
+import { motion } from 'framer-motion-3d'
+import { useSetRecoilState } from 'recoil'
+import { isStartScene } from '../utils/atom'
 
 const HowToPlay = () => {
-
+    const setStart = useSetRecoilState(isStartScene)
     const fontUrl = '/assets/fonts/Pretendard.json' // three에서 font의 확장자는 json이다. json으로 확장자 변경 필요
 
     const fontStyle = {
@@ -15,7 +18,18 @@ const HowToPlay = () => {
     }
 
     return (
-        <group position={[0.4, 0, 1.2]} rotation={[-Math.PI/2, 0, 0]}>
+        <motion.group
+            /* 아래 속성들을 활용
+            onUpdate={() => console.log('진행중')}
+            onAnimationStart={() => console.log('시작')}
+            onAnimationComplete={() => console.log('종료')}
+            */
+            onAnimationComplete={() => setStart(true)}
+            position={[0.4, 0, 1.2]}
+            rotation={[-Math.PI/2, 0, 0]}
+            animate={{ y: [-2, 0], scale: [0, 1]}}
+            transition={{ delay: 1.5, duration: 0.3 }}
+        >
             {/* 2D Text */}
             {/* <Text
                 font={fontUrl}
@@ -64,7 +78,7 @@ const HowToPlay = () => {
                     <meshNormalMaterial />
                 </Text3D>
             </group>
-        </group>
+        </motion.group>
     )
 }
 
